@@ -19,7 +19,7 @@ go get -u github.com/stoewer/go-strcase
 ```
 
 ```go
-import github.com/stoewer/go-strcase
+import "github.com/stoewer/go-strcase"
 
 var snake = strcase.SnakeCase("CamelCase")
 ```
