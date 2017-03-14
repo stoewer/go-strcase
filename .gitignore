@@ -4,21 +4,14 @@
 *.so
 
 # Folders
-_obj
-_test
+vendor
+doc
 
-# Architecture specific extensions/prefixes
-*.[568vq]
-[568vq].out
+# Temporary files
+*~
+*.swp
 
-*.cgo1.go
-*.cgo2.c
-_cgo_defun.c
-_cgo_gotypes.go
-_cgo_export.*
-
-_testmain.go
-
-*.exe
-*.test
-*.prof
+# Editor and IDE config
+.idea
+*.iml
+.vscode
