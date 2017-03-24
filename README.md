@@ -1,3 +1,6 @@
+[![GoDoc](https://godoc.org/github.com/stoewer/go-strcase?status.svg)](https://godoc.org/github.com/stoewer/go-strcase)
+---
+
 # Go strcase
 
 The package `strcase` converts between different kinds of naming formats such as camel case 
