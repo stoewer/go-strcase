@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/stoewer/go-strcase.svg?branch=master)](https://travis-ci.org/stoewer/go-strcase)
 [![GoDoc](https://godoc.org/github.com/stoewer/go-strcase?status.svg)](https://godoc.org/github.com/stoewer/go-strcase)
 ---
 
