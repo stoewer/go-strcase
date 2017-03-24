@@ -5,8 +5,9 @@ go:
  - 1.8
 
 install:
- - go get github.com/golang/lint/golint
- - go get github.com/mattn/goveralls
+ - go get -v -u github.com/golang/lint/golint
+ - go get -v -u github.com/mattn/goveralls
+ - go get -v -u github.com/stretchr/testify/...
 
 script:
  - golint -set_exit_status ./
