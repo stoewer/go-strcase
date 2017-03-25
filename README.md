@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/stoewer/go-strcase.svg?branch=master)](https://travis-ci.org/stoewer/go-strcase)
+[![Coverage Status](https://coveralls.io/repos/github/stoewer/go-strcase/badge.svg?branch=master)](https://coveralls.io/github/stoewer/go-strcase?branch=master)
 [![GoDoc](https://godoc.org/github.com/stoewer/go-strcase?status.svg)](https://godoc.org/github.com/stoewer/go-strcase)
 ---
 
