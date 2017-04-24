@@ -15,6 +15,8 @@ func TestSnakeCase(t *testing.T) {
 		"":                           "",
 		"F":                          "f",
 		"Foo":                        "foo",
+		"FooB":                       "foo_b",
+		"FooID":                      "foo_id",
 		" FooBar\t":                  "foo_bar",
 		"HTTPStatusCode":             "http_status_code",
 		"ParseURL.DoParse":           "parse_url.do_parse",

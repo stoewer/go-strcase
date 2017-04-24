@@ -15,6 +15,8 @@ func TestKebabCase(t *testing.T) {
 		"":                           "",
 		"F":                          "f",
 		"Foo":                        "foo",
+		"FooB":                       "foo-b",
+		"FooID":                      "foo-id",
 		" FooBar\t":                  "foo-bar",
 		"HTTPStatusCode":             "http-status-code",
 		"ParseURL.DoParse":           "parse-url.do-parse",
