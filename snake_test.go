@@ -1,12 +1,11 @@
 // Copyright (c) 2017, A. Stoewer <adrian.stoewer@rz.ifi.lmu.de>
 // All rights reserved.
 
-package strcase_test
+package strcase
 
 import (
 	"testing"
 
-	"github.com/stoewer/go-strcase"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -28,7 +27,7 @@ func TestSnakeCase(t *testing.T) {
 	}
 
 	for camel, snake := range data {
-		converted := strcase.SnakeCase(camel)
+		converted := SnakeCase(camel)
 		assert.Equal(t, snake, converted)
 	}
 }
