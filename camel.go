@@ -18,7 +18,7 @@ func LowerCamelCase(s string) string {
 }
 
 func camelCase(s string, upper bool) string {
-	s = strings.TrimSpace(s)
+	s = strings.TrimSpace(SnakeCase(s))
 	buffer := make([]rune, 0, len(s))
 
 	var prev rune
