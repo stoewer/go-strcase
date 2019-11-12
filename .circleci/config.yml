@@ -1,9 +1,11 @@
-version: 2
+version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.5
 jobs:
   build:
     docker:
     - image: golang:1.13
-    working_directory: /go-strcase
+    working_directory: /work
     steps:
     - checkout
     - run:
@@ -21,3 +23,5 @@ jobs:
     - run:
         name: Test
         command: go test -mod=readonly -v -race -count=1 -cover -coverprofile=profile.cov ./...
+    - codecov/upload:
+        file: /work/profile.cov
