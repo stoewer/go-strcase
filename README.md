@@ -1,5 +1,5 @@
 [![CircleCI](https://circleci.com/gh/stoewer/go-strcase/tree/master.svg?style=svg)](https://circleci.com/gh/stoewer/go-strcase/tree/master)
-[![Coverage Status](https://coveralls.io/repos/github/stoewer/go-strcase/badge.svg?branch=master)](https://coveralls.io/github/stoewer/go-strcase?branch=master)
+[![codecov](https://codecov.io/gh/stoewer/go-strcase/branch/master/graph/badge.svg)](https://codecov.io/gh/stoewer/go-strcase)
 [![GoDoc](https://godoc.org/github.com/stoewer/go-strcase?status.svg)](https://godoc.org/github.com/stoewer/go-strcase)
 ---
 
