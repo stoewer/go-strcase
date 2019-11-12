@@ -6,12 +6,11 @@ go:
 - '1.13'
 
 env:
-- GO111MODULE=on
-- GOLANGCI_LINT_VERSION=1.21.0
+- GO111MODULE=on GOLANGCI_LINT_VERSION=1.21.0
 
 install:
 - wget -q https://github.com/golangci/golangci-lint/releases/download/v$GOLANGCI_LINT_VERSION/golangci-lint-$GOLANGCI_LINT_VERSION-linux-amd64.tar.gz -O /tmp/golangci-lint.tar.gz
-- tar --strip-components=1 -C $GOBIN -xzf /tmp/golangci-lint.tar.gz
+- tar --strip-components=1 -C $GOPATH/bin -xzf /tmp/golangci-lint.tar.gz
 - go get github.com/mattn/goveralls
 
 script:
