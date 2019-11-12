@@ -42,16 +42,9 @@ Dependencies
 Run linters and unit tests
 -------------------------- 
 
-Since some of the linters ran by gometalinter don't support go modules yet, test dependencies have to be
-loaded to the vendor directory first and gometalinter itself must run with disabled module support:
+To run the static code analysis, linters and tests use the following commands:
 
 ```
-go mod vendor
-GO111MODULE=off gometalinter --config=.gometalinter.json --deadline=10m .
-```
-
-To run the test use the following commands:
-
-```
-go test .
+golangci-lint run --config .golangci.yml ./...
+go test ./...
 ```
