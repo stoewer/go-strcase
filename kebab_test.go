@@ -31,3 +31,26 @@ func TestKebabCase(t *testing.T) {
 		assert.Equal(t, snake, converted)
 	}
 }
+
+func TestUpperKebabCase(t *testing.T) {
+	data := map[string]string{
+		"":                           "",
+		"F":                          "F",
+		"Foo":                        "FOO",
+		"FooB":                       "FOO-B",
+		"FooID":                      "FOO-ID",
+		" FooBar\t":                  "FOO-BAR",
+		"HTTPStatusCode":             "HTTP-STATUS-CODE",
+		"ParseURL.DoParse":           "PARSE-URL.DO-PARSE",
+		"Convert Space":              "CONVERT-SPACE",
+		"Convert-dash":               "CONVERT-DASH",
+		"Skip___MultipleUnderscores": "SKIP-MULTIPLE-UNDERSCORES",
+		"Skip   MultipleSpaces":      "SKIP-MULTIPLE-SPACES",
+		"Skip---MultipleDashes":      "SKIP-MULTIPLE-DASHES",
+	}
+
+	for camel, snake := range data {
+		converted := UpperKebabCase(camel)
+		assert.Equal(t, snake, converted)
+	}
+}

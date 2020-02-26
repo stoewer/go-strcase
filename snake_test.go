@@ -31,3 +31,26 @@ func TestSnakeCase(t *testing.T) {
 		assert.Equal(t, snake, converted)
 	}
 }
+
+func TestUpperSnakeCase(t *testing.T) {
+	data := map[string]string{
+		"":                           "",
+		"F":                          "F",
+		"Foo":                        "FOO",
+		"FooB":                       "FOO_B",
+		"FooID":                      "FOO_ID",
+		" FooBar\t":                  "FOO_BAR",
+		"HTTPStatusCode":             "HTTP_STATUS_CODE",
+		"ParseURL.DoParse":           "PARSE_URL.DO_PARSE",
+		"Convert Space":              "CONVERT_SPACE",
+		"Convert-dash":               "CONVERT_DASH",
+		"Skip___MultipleUnderscores": "SKIP_MULTIPLE_UNDERSCORES",
+		"Skip   MultipleSpaces":      "SKIP_MULTIPLE_SPACES",
+		"Skip---MultipleDashes":      "SKIP_MULTIPLE_DASHES",
+	}
+
+	for camel, snake := range data {
+		converted := UpperSnakeCase(camel)
+		assert.Equal(t, snake, converted)
+	}
+}
