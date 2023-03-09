@@ -24,6 +24,7 @@ func TestUpperCamelCase(t *testing.T) {
 		"skip   many spaces":    "SkipManySpaces",
 		"skip---many-dashes":    "SkipManyDashes",
 		"skip___many_underline": "SkipManyUnderline",
+		"XRequestId":            "XRequestId",
 	}
 
 	for in, out := range data {
@@ -47,6 +48,7 @@ func TestLowerCamelCase(t *testing.T) {
 		"skip   many spaces":    "skipManySpaces",
 		"skip---many-dashes":    "skipManyDashes",
 		"skip___many_underline": "skipManyUnderline",
+		"XRequestId":            "xRequestId",
 	}
 
 	for in, out := range data {
