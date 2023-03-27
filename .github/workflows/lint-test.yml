@@ -19,7 +19,7 @@ jobs:
         uses: golangci/golangci-lint-action@v3
         with:
           version: v1.52.2
-          args: --config ./golangci.yml
+          args: --config .golangci.yml
 
       - name: Test
         run: go test -race -covermode=atomic -coverprofile=./coverage.out ./...
