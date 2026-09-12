@@ -54,3 +54,25 @@ func TestUpperSnakeCase(t *testing.T) {
 		assert.Equal(t, snake, converted)
 	}
 }
+
+func TestTrailingDelimiters(t *testing.T) {
+	converters := []struct {
+		name      string
+		convert   func(string) string
+		word      string
+		delimiter string
+	}{
+		{"snake", SnakeCase, "dolphin", "_"},
+		{"upper snake", UpperSnakeCase, "DOLPHIN", "_"},
+		{"kebab", KebabCase, "dolphin", "-"},
+		{"upper kebab", UpperKebabCase, "DOLPHIN", "-"},
+	}
+	for _, converter := range converters {
+		t.Run(converter.name, func(t *testing.T) {
+			for _, suffix := range []string{"_", "-", "__", "--", "_-", "-_"} {
+				assert.Equal(t, converter.word+converter.delimiter, converter.convert("Dolphin"+suffix), suffix)
+				assert.Equal(t, converter.delimiter, converter.convert(suffix), suffix)
+			}
+		})
+	}
+}
