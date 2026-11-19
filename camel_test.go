@@ -11,6 +11,8 @@ import (
 
 func TestUpperCamelCase(t *testing.T) {
 	data := map[string]string{
+		"__foo_bar":             "FooBar",
+		"--HTTP_status":         "HttpStatus",
 		"":                      "",
 		"f":                     "F",
 		"foo":                   "Foo",
@@ -39,6 +41,9 @@ func TestUpperCamelCase(t *testing.T) {
 func TestLowerCamelCase(t *testing.T) {
 	data := map[string]string{
 		"":                      "",
+		"__foo_bar":             "fooBar",
+		"--HTTP_status":         "httpStatus",
+		"_-FooBar":              "fooBar",
 		"F":                     "f",
 		"foo":                   "foo",
 		"FooBar":                "fooBar",
