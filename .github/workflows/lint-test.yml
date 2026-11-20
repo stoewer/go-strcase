@@ -1,37 +1,81 @@
 name: Lint and Test
 
-on: push
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
 
-permissions: {}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
 
 jobs:
+  # Required check: has no secrets and no third party uploads, so it behaves
+  # the same for pushes, PRs from this repository, and PRs from forks.
   lint-and-test:
-
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
       - name: Set-up Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v7
         with:
-          go-version: 1.24
-          cache: true
+          go-version: stable
 
       - name: Lint
-        uses: golangci/golangci-lint-action@v8
+        uses: golangci/golangci-lint-action@v9
         with:
-          version: v2.1
+          version: v2.15
           args: --config .golangci.yml
 
       - name: Test
-        run: go test -race -covermode=atomic -coverprofile=./coverage.out ./...
+        run: go test -race ./...
 
-      - name: Upload coverage
-        uses: codecov/codecov-action@v3
+  # Optional check: do not mark it as required. Coverage is reported to the
+  # job summary and to Codecov. Forks have no access to OIDC or secrets, so
+  # their uploads are tokenless and failures are tolerated.
+  coverage:
+    # Dependabot runs get no OIDC token, which would fail the upload step.
+    if: github.actor != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # OIDC authentication with Codecov
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          persist-credentials: false
+
+      - name: Set-up Go
+        uses: actions/setup-go@v7
+        with:
+          go-version: stable
+
+      - name: Test with coverage
+        run: go test -race -covermode=atomic -coverprofile=coverage.out ./...
+
+      - name: Coverage summary
+        run: |
+          {
+            echo '### Coverage'
+            echo '```'
+            go tool cover -func=coverage.out | tail -n 1
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v7
+        with:
+          use_oidc: true
           files: ./coverage.out
+          disable_search: true
+          fail_ci_if_error: ${{ github.event.pull_request.head.repo.fork != true }}
           verbose: true
